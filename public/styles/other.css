@@ -1,0 +1,47 @@
+body{
+    background: #000000;
+    color: #FFFFFF;
+    overflow-x: hidden;
+}
+img{
+    object-fit: cover;
+}
+
+.form-control:focus {
+    background: none;
+    box-shadow: unset;
+}
+
+/**::-webkit-scrollbar {*/
+/*    background: none;*/
+/*    width: 8px;*/
+/*    height: 8px;*/
+/*}*/
+/**::-webkit-scrollbar-thumb {*/
+/*    background: linear-gradient(145deg, rgba(221,141,4,1) 0%, rgba(255,187,0,1) 25%, rgba(255,255,0,1) 50%, rgba(255,182,0,1) 75%, rgba(221,141,4,1) 100%);*/
+/*    background-size: 400% 400%;*/
+/*    animation: gradient 5s ease infinite;*/
+/*    border-radius: unset;*/
+/*    border: none;*/
+/*}*/
+
+/*:root {*/
+/*    --scrollbarThumbColor: linear-gradient(145deg, rgba(221,141,4,1) 0%, rgba(255,187,0,1) 25%, rgba(255,255,0,1) 50%, rgba(255,182,0,1) 75%, rgba(221,141,4,1) 100%);*/
+/*}*/
+
+/** {*/
+/*    scrollbar-color: #FEF70B #000000;*/
+/*    scrollbar-width: thin*/
+/*}*/
+
+/*@keyframes gradient {*/
+/*    0% {*/
+/*        background-position: 0 50%;*/
+/*    }*/
+/*    50% {*/
+/*        background-position: 100% 50%;*/
+/*    }*/
+/*    100% {*/
+/*        background-position: 0 50%;*/
+/*    }*/
+/*}*/
