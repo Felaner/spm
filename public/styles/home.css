@@ -1,0 +1,99 @@
+.first-bg{
+    background: url("../images/backgrounds/first-bg.svg") center center/cover no-repeat;
+    width: 100%;
+    height: 100vh;
+}
+.product-header{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, #167AB6 -1.5%, #FFFFFF 6.68%, #167AB6 11.96%, #167AB6 99.39%);
+}
+.product-logo{
+    color: #ffffff;
+    margin-left: 4%;
+    font-size: 30px;
+}
+.product-logo span{
+    color: #000000;
+}
+.product-logo div{
+    margin-left: 20px;
+}
+.product-category{
+    color: #FFFFFF;
+    font-size: 30px;
+    margin-right: 85px;
+    text-transform: uppercase;
+}
+.product-gif{
+    width: 100%;
+    height: 360px;
+    background: #167AB6;
+    box-shadow: -6px 0px 15px rgba(255, 255, 255, 0.9), 7px 6px 15px rgba(255, 255, 255, 0.9), 0px 7px 15px rgba(0, 0, 0, 0.7);
+    border-radius: 0px 60px 60px 0px;
+}
+.product-gif img{
+    max-height: 90%;
+}
+.product-draft{
+    width: 100%;
+    height: 460px;
+    background: #167AB6;
+    box-shadow: 0px -3px 15px rgba(255, 255, 255, 0.9), 0px 4px 19px rgba(0, 0, 0, 0.7), 10px 0px 15px #FFFFFF;
+    border-radius: 60px 0px 0px 60px;
+}
+.product-draft-img{
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    left: 42%;
+    top: 30%;
+}
+
+.product-draft-hover{
+    width: 400px;
+    height: 250px;
+}
+.hover-1{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+}
+.hover-2{
+    position: absolute;
+    left: 40%;
+    top: 70%;
+    opacity: 0;
+}
+.description-title{
+    color: #167AB6;
+}
+.description-text span{
+    font-weight: bold;
+}
+table.iksweb{
+    width: 100%;
+    border-collapse:collapse;
+    border-spacing:0;
+    height: auto;
+}
+table.iksweb,table.iksweb td, table.iksweb th {
+    border-right: 1px solid #000000;
+}
+table.iksweb td,table.iksweb th {
+    padding-right: 4px;
+    width: 50px;
+    height: 35px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+    cursor: pointer;
+    transition: 0.4s;
+}
+table.iksweb td:hover{
+    background: #167AB6;
+}
+table.iksweb th {
+    color: #fff;
+}
