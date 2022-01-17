@@ -32,6 +32,7 @@
             })
             .addTo(controller)
     })
+
     draft.forEach(function (el, i) {
         let height = $(el).parent().height()
         $(el).addClass('animate__animated')

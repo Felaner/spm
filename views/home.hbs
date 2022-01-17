@@ -1,4 +1,52 @@
 <div class="container-fluid p-0">
+    <div class="position-fixed cart-target"><a href="" class="open-cart" data-toggle="modal" data-target="#callModal"><img
+            src="/images/icons/cart.svg" alt="cart"></a></div>
+    <div class="add-success position-fixed animate__animated">
+
+    </div>
+    <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcDmBQeAAAAADOEL0zfoXRA_5VKwnv0KQ96DKNt" data-callback="onSubmitReCaptcha" data-size="invisible"></div>
+    <div class="modal fade" id="callModal" tabindex="-1" aria-labelledby="callModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content form-box">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart_content">
+
+                    </ul>
+                    <h3 class="col-12 text-center pb-1" id="callModalLabel">Заполните поля</h3>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="cartInputName">Имя *</label>
+                                <input name="name" type="text" class="form-control required" id="cartInputName" placeholder="Введите имя">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="cartInputPhone">Номер телефона *</label>
+                                <input name="phone" type="tel" class="form-control required" id="cartInputPhone" placeholder="Введите телефон">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="cartInputEmail">Email *</label>
+                                <input name="email" type="email" class="form-control required" id="cartInputEmail" placeholder="Введите email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center pt-2">
+                        <button class="divide-button" id="cartBuy">Заказать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="first-bg"></div>
     <div class="product-header d-flex flex-xl-row flex-lg-row flex-column align-items-center justify-content-xl-between justify-content-lg-between justify-content-around">
         <div class="product-logo d-xl-flex d-lg-flex align-items-center font-weight-bold d-none">
