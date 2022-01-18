@@ -1,3 +1,11 @@
+$(window).on('load', function () {
+    $('body').addClass('loaded_hiding');
+    window.setTimeout(function () {
+        $('body').addClass('loaded');
+        $('body').removeClass('loaded_hiding');
+    }, 1500);
+});
+
 (function (){
     let controller = new ScrollMagic.Controller()
     let scene;
@@ -467,6 +475,28 @@
                         })
                     })
                 }
+            })
+        })
+    })
+
+    products.forEach(el => {
+        const input = el.querySelector('input[name=size]')
+        el.querySelectorAll('tbody tr').forEach((el) => {
+            el.querySelectorAll('td').forEach((el, indexTd) => {
+                el.addEventListener('click', function () {
+                    input.value = ''
+                    el.parentNode.parentNode.querySelectorAll('td').forEach(el => {
+                        el.style.backgroundColor = 'unset'
+                    })
+                    el.parentNode.parentNode.querySelectorAll("tr").forEach(el => {
+                        if (el.querySelector(`td:nth-child(${indexTd + 2})`)) {
+                            const scaleName = el.querySelector('th').innerHTML
+                            const sizes = el.querySelector(`td:nth-child(${indexTd + 2})`)
+                            sizes.style.backgroundColor = '#167AB6'
+                            input.value += scaleName + ' : ' + sizes.innerHTML + '; '
+                        }
+                    })
+                })
             })
         })
     })
