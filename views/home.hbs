@@ -4,7 +4,6 @@
     <div class="add-success position-fixed animate__animated">
 
     </div>
-    <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcDmBQeAAAAADOEL0zfoXRA_5VKwnv0KQ96DKNt" data-callback="onSubmitReCaptcha" data-size="invisible"></div>
     <div class="modal fade" id="callModal" tabindex="-1" aria-labelledby="callModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content form-box">
@@ -19,31 +18,34 @@
 
                     </ul>
                     <h3 class="col-12 text-center pb-1" id="callModalLabel">Заполните поля</h3>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="cartInputName">Имя *</label>
-                                <input name="name" type="text" class="form-control required" id="cartInputName" placeholder="Введите имя">
+                    <form id="submitForm">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="cartInputName">Имя *</label>
+                                    <input name="name" type="text" class="form-control required" id="cartInputName" placeholder="Введите имя">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="cartInputPhone">Номер телефона *</label>
+                                    <input name="phone" type="tel" class="form-control required" id="cartInputPhone" placeholder="Введите телефон">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="cartInputPhone">Номер телефона *</label>
-                                <input name="phone" type="tel" class="form-control required" id="cartInputPhone" placeholder="Введите телефон">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="cartInputEmail">Email *</label>
+                                    <input name="email" type="email" class="form-control required" id="cartInputEmail" placeholder="Введите email">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="cartInputEmail">Email *</label>
-                                <input name="email" type="email" class="form-control required" id="cartInputEmail" placeholder="Введите email">
-                            </div>
+                        <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcDmBQeAAAAADOEL0zfoXRA_5VKwnv0KQ96DKNt" data-callback="verifyCallback"></div>
+                        <div class="row justify-content-center pt-2">
+                            <button class="divide-button" id="cartBuy">Заказать</button>
                         </div>
-                    </div>
-                    <div class="row justify-content-center pt-2">
-                        <button class="divide-button" id="cartBuy">Заказать</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

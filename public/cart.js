@@ -17,12 +17,11 @@ function setCartData(el){
 
 function addToCart(el){
     el.disabled = true; // блокируем кнопку на время операции с корзиной
-    console.log(el.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('input[type=hidden]').getAttribute('data-id'))
     const cartData = getCartData() || {}, // получаем данные корзины или создаём новый объект, если данных еще нет
         parentBox = el.parentNode.parentNode.parentNode.parentNode.parentNode, // родительский элемент кнопки "Добавить в корзину"
         itemId = parentBox.querySelector('input[type=hidden]').getAttribute('data-id'), // ID товараs
         itemTitle = parentBox.parentNode.parentNode.querySelector('.product-name').innerHTML, // название товара
-        productCount = parseInt(el.parentNode.querySelector('#count').value)
+        productCount = parseInt(el.parentNode.parentNode.querySelector('#count').value)
     if(cartData.hasOwnProperty(itemId)){ // если такой товар уже в корзине, то добавляем +1 к его количеству
         cartData[itemId][1] += productCount;
     } else { // если товара в корзине еще нет, то добавляем в объект
@@ -46,7 +45,7 @@ function showCart() {
                 `<div class="row"><div class="col-12">Количество: <input name="productCount" type="number" id="productCount" class="form-control" value="${cartData[items][1]}"></div>` +
                 '<div class="col-12"><label for="productSize">Какой размер вам нужен?</label>' +
                 '<input name="productSize" type="text" id="productSize" class="form-control"></div></div>' +
-                '<div class="product-divider"></div><a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br></li>'
+                `<div class="product-divider"></div><a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br></li>`
             productList.insertAdjacentHTML('beforeend', product)
         }
     }
@@ -93,7 +92,22 @@ function clearForm() {
     document.querySelector('button[aria-label="Close"]').click()
 }
 
+function recaptchaCallback() {
+    $('#cartBuy').removeAttr('disabled');
+};
+
+let checkCaptch = false;
+function verifyCallback(response) {
+    if (response === "") {
+        checkCaptch = false;
+    }
+    else {
+        checkCaptch = true;
+    }
+};
+
 $(function () {
+
     if(web_storage()){
         $('.cartBuy').on('click', el => {
             addToCart(el.target)
@@ -107,10 +121,11 @@ $(function () {
         alert('В данном браузере нет поддержки localStorage')
     }
 
-    $("#cartBuy")[0].addEventListener('click', function (e) {
+    $("#submitForm").on('submit', function (e) {
         let result = true
         if (!document.querySelector('#cart_content').childNodes.length) {
             fadeAddSuccess('Добавьте товары в корзину!')
+            return false
         } else {
             $("input.required").each(function (){
                 if ($(this).attr('type') === 'email') {
@@ -142,51 +157,45 @@ $(function () {
             if (result === false) {
                 return false
             } else {
-                grecaptcha.execute();
-                let contacts = {
-                    name: document.querySelector('#cartInputName').value,
-                    phone: document.querySelector('#cartInputPhone').value,
-                    email: document.querySelector('#cartInputEmail').value
+                if (checkCaptch && grecaptcha.getResponse() !== "") {
+                    let contacts = {
+                        name: document.querySelector('#cartInputName').value,
+                        phone: document.querySelector('#cartInputPhone').value,
+                        email: document.querySelector('#cartInputEmail').value
+                    }
+                    let products = {}
+                    products['customer'] = contacts
+                    products['g-recaptcha-response'] = grecaptcha.getResponse()
+                    document.querySelectorAll('#cart_content li').forEach((el, i) => {
+                        let name = el.querySelector('h5').innerText
+                        let count = el.querySelector('#productCount').value
+                        let size = el.querySelector('#productSize').value
+                        products[i] = [name, count, size]
+                    })
+                    $.ajax({
+                        type: 'POST',
+                        url: "/",
+                        data: products,
+                        error: function(jqXHR, textStatus, err) {
+                            grecaptcha.reset();
+                            fadeAddSuccess('Ошибка капчи')
+                        },
+                        beforeSend: function() {
+                            console.log('loading')
+                        },
+                        success: function(data) {
+                            grecaptcha.reset();
+                            clearCart()
+                            clearForm()
+                            fadeAddSuccess('Заказ отправлен')
+                        }
+                    })
+                    e.preventDefault();
+                    return false;
+                } else {
+                    fadeAddSuccess('Подтвердите, что вы не робот')
+                    return false
                 }
-                let products = {}
-                products['customer'] = contacts
-                document.querySelectorAll('#cart_content li').forEach((el, i) => {
-                    let name = el.querySelector('h5').innerText
-                    let count = el.querySelector('#productCount').value
-                    let size = el.querySelector('#productSize').value
-                    products[i] = [name, count, size]
-                })
-
-                // $.ajax({
-                //     url: 'send_form.php',
-                //     contentType : false,
-                //     processData: false,
-                //     type: "post",
-                //     success: function(data) {
-                //         if(data === 'ok') {
-                            $.ajax({
-                                type: 'POST',
-                                url: "/",
-                                data: products,
-                                error: function(jqXHR, textStatus, err) {
-                                    console.log('error: ' + err)
-                                },
-                                beforeSend: function() {
-                                    console.log('loading')
-                                },
-                                success: function(data) {
-                                    clearCart()
-                                    clearForm()
-                                    fadeAddSuccess('Заказ отправлен')
-                                }
-                            })
-                            e.preventDefault();
-                            return false;
-                    //     } else {
-                    //         console.log(data);
-                    //     }
-                    // }
-                // })
             }
         }
     })
