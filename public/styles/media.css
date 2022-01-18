@@ -43,6 +43,25 @@
     }
 }
 
+@media only screen and (max-width:420px) {
+    .g-recaptcha {
+        margin-left: 12%;
+        width: 230px;
+        transform: scale(.79);
+        -webkit-transform: scale(.79);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0
+    }
+}
+@media only screen and (max-width:340px) {
+    .g-recaptcha {
+        transform: scale(.75);
+        -webkit-transform: scale(.75);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0
+    }
+}
+
 @media (max-width: 380px) {
 
 }
