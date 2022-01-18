@@ -46,7 +46,7 @@ function showCart() {
                 `<div class="row"><div class="col-12">Количество: <input name="productCount" type="number" id="productCount" class="form-control" value="${cartData[items][1]}"></div>` +
                 '<div class="col-12"><label for="productSize">Какой размер вам нужен?</label>' +
                 '<input name="productSize" type="text" id="productSize" class="form-control"></div></div>' +
-                '<div class="product-divider"></div>`<a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br>`</li>'
+                '<div class="product-divider"></div><a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br></li>'
             productList.insertAdjacentHTML('beforeend', product)
         }
     }

@@ -3,65 +3,67 @@
     let scene;
     let draft = document.querySelectorAll('.product-draft');
     let gif = document.querySelectorAll('.product-gif');
-    gif.forEach(function (el, i) {
-        let height = $(el).parent().height()
-        $(el).addClass('animate__animated')
-        $(el).addClass('animate__fadeOutLeft')
-        scene = new ScrollMagic.Scene({
-            triggerElement: el,
-            duration: height,
-            offset: -100
+    if ($(window).width() > 991) {
+        gif.forEach(function (el, i) {
+            let height = $(el).parent().height()
+            $(el).addClass('animate__animated')
+            $(el).addClass('animate__fadeOutLeft')
+            scene = new ScrollMagic.Scene({
+                triggerElement: el,
+                duration: height,
+                offset: -100
+            })
+                .on('start', (event) => {
+                    if(event.scrollDirection === 'FORWARD') {
+                        $(el).removeClass('animate__fadeOutLeft');
+                        $(el).addClass('animate__fadeInLeft');
+                    } else {
+                        $(el).removeClass('animate__fadeInLeft');
+                        $(el).addClass('animate__fadeOutLeft')
+                    }
+                })
+                .on('end', (event) => {
+                    if(event.scrollDirection === 'FORWARD') {
+                        $(el).removeClass('animate__fadeInLeft');
+                        $(el).addClass('animate__fadeOutLeft')
+                    } else {
+                        $(el).removeClass('animate__fadeOutLeft');
+                        $(el).addClass('animate__fadeInLeft');
+                    }
+                })
+                .addTo(controller)
         })
-            .on('start', (event) => {
-                if(event.scrollDirection === 'FORWARD') {
-                    $(el).removeClass('animate__fadeOutLeft');
-                    $(el).addClass('animate__fadeInLeft');
-                } else {
-                    $(el).removeClass('animate__fadeInLeft');
-                    $(el).addClass('animate__fadeOutLeft')
-                }
-            })
-            .on('end', (event) => {
-                if(event.scrollDirection === 'FORWARD') {
-                    $(el).removeClass('animate__fadeInLeft');
-                    $(el).addClass('animate__fadeOutLeft')
-                } else {
-                    $(el).removeClass('animate__fadeOutLeft');
-                    $(el).addClass('animate__fadeInLeft');
-                }
-            })
-            .addTo(controller)
-    })
 
-    draft.forEach(function (el, i) {
-        let height = $(el).parent().height()
-        $(el).addClass('animate__animated')
-        $(el).addClass('animate__fadeOutRight')
-        scene = new ScrollMagic.Scene({
-            triggerElement: el,
-            duration: height,
-            offset: -100
+        draft.forEach(function (el, i) {
+            let height = $(el).parent().height()
+            $(el).addClass('animate__animated')
+            $(el).addClass('animate__fadeOutRight')
+            scene = new ScrollMagic.Scene({
+                triggerElement: el,
+                duration: height,
+                offset: -100
+            })
+                .on('start', (event) => {
+                    if(event.scrollDirection === 'FORWARD') {
+                        $(el).removeClass('animate__fadeOutRight');
+                        $(el).addClass('animate__fadeInRight');
+                    } else {
+                        $(el).removeClass('animate__fadeInRight');
+                        $(el).addClass('animate__fadeOutRight')
+                    }
+                })
+                .on('end', (event) => {
+                    if(event.scrollDirection === 'FORWARD') {
+                        $(el).removeClass('animate__fadeInRight');
+                        $(el).addClass('animate__fadeOutRight')
+                    } else {
+                        $(el).removeClass('animate__fadeOutRight');
+                        $(el).addClass('animate__fadeInRight');
+                    }
+                })
+                .addTo(controller)
         })
-            .on('start', (event) => {
-                if(event.scrollDirection === 'FORWARD') {
-                    $(el).removeClass('animate__fadeOutRight');
-                    $(el).addClass('animate__fadeInRight');
-                } else {
-                    $(el).removeClass('animate__fadeInRight');
-                    $(el).addClass('animate__fadeOutRight')
-                }
-            })
-            .on('end', (event) => {
-                if(event.scrollDirection === 'FORWARD') {
-                    $(el).removeClass('animate__fadeInRight');
-                    $(el).addClass('animate__fadeOutRight')
-                } else {
-                    $(el).removeClass('animate__fadeOutRight');
-                    $(el).addClass('animate__fadeInRight');
-                }
-            })
-            .addTo(controller)
-    })
+    }
 
     const products = document.querySelectorAll('.product')
 
