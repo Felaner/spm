@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
                     messageBody += '<li>'
                     Model[el].forEach((el, i) => {
                         if (i === 0) {
-                            messageBody += `Товар: ${el}<br>`
+                            messageBody += `${el}<br>`
                         } else if (i === 1) {
                             messageBody += `Количество: ${el} шт.<br>`
                         } else if (i === 2) {

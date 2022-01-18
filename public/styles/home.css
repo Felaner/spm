@@ -212,3 +212,9 @@
     width: 100%;
     margin: 1.75rem auto;
 }
+
+.cart-count {
+    top: 0;
+    right: 11px;
+    color: white;
+}
