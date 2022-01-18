@@ -42,12 +42,11 @@ function showCart() {
     }
     if (cartData !== null) {
         for(let items in cartData){
-            let product = `<li class="position-relative"><h5>Товар: ${cartData[items][0]}</h5><br>` +
-                `Количество: <input name="productCount" type="number" id="productCount" class="form-control" value="${cartData[items][1]}">` +
-                `<a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br>` +
-                '<label for="productSize">Какой размер вам нужен?</label>' +
-                '<input name="productSize" type="text" id="productSize" class="form-control">' +
-                '</li>'
+            let product = `<li class="position-relative mx-auto col-md-6 col-12 mb-2"><h5>Товар: ${cartData[items][0]}</h5><br>` +
+                `<div class="row"><div class="col-12">Количество: <input name="productCount" type="number" id="productCount" class="form-control" value="${cartData[items][1]}"></div>` +
+                '<div class="col-12"><label for="productSize">Какой размер вам нужен?</label>' +
+                '<input name="productSize" type="text" id="productSize" class="form-control"></div></div>' +
+                '<div class="product-divider"></div>`<a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br>`</li>'
             productList.insertAdjacentHTML('beforeend', product)
         }
     }

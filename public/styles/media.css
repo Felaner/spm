@@ -18,13 +18,15 @@
     }
     .form-button{
         width: 300px;
-        margin-top: 15px;
     }
 }
 
 @media (max-width: 767px) {
     .product-logo{
         margin-left: 0;
+    }
+    .cart-content{
+        padding-left: 0;
     }
 
 }

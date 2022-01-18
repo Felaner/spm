@@ -45,3 +45,29 @@ img{
 /*        background-position: 0 50%;*/
 /*    }*/
 /*}*/
+
+.product-divider{
+    width: 100%;
+    height: 2px;
+    background: #167AB6;
+    border-radius: 2px;
+    margin-top: 15px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -94,20 +94,28 @@
     outline: #FFFFFF;
 }
 .form-button{
-    padding: 0 30px;
-    border: none;
+    padding: 5px 30px 5px 30px;
     background: #167AB6;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.26);
     border-radius: 5px;
-    font-size: 28px;
+    border: 1px solid transparent;
+    font-size: 24px;
     color: #FFFFFF;
     transition: 0.4s all;
+    margin-left: 45px;
 }
 .form-button:hover{
     color: #167AB6;
     background: #FFFFFF;
     border: 1px solid #167AB6;
     box-shadow: 0px 6px 10px rgba(22, 122, 182, 0.26);
+    text-decoration: none;
+    cursor: pointer;
+}
+.form-count{
+    font-size: 24px;
+    margin-bottom: 0;
+    padding-top: 5px;
 }
 .map-wrapper{
     background: linear-gradient(180deg, #167AB6 0%, rgba(246, 250, 252, 0.59) 63.17%, #B3D9F0 72.41%, #167AB6 113.78%);
@@ -126,27 +134,34 @@
 .delete-product {
     position: absolute;
     width: 13px;
-    left: -35px;
+    left: -14px;
     top: 0;
     cursor: pointer;
 }
+.delete-product:hover{
+    text-decoration: none;
+}
 
 .add-success {
+    position: relative;
     display: none;
     width: 300px;
-    height: 140px;
+    height: 80px;
+    border-radius: 0 0 25px 25px;
+    border: 1px solid #167AB6;
     background: white;
-    z-index: 1;
+    z-index: 1000;
     top: 0;
-    right: 0;
+    right: calc(50% - 150px);
 }
 
 .add-success p{
-    color: #000000;
+    color: #05aa21;
     text-align: center;
     padding-top: 20px;
     font-size: 20px;
 }
+
 
 .cart-target {
     z-index: 1000;
@@ -169,4 +184,32 @@
 .g-recaptcha {
     z-index: 1000;
     position: relative;
+}
+.modal-content{
+    height: 50%;
+}
+.divide-button{
+    border: 1px solid transparent;
+    background: #167AB6;
+    color: #FFFFFF;
+    font-size: 24px;
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    transition: 0.4s all;
+}
+.divide-button:hover{
+    color: #167AB6;
+    background: #FFFFFF;
+    border: 1px solid #167AB6;
+}
+.cart-content{
+    padding: 0;
+    padding-left: 30px;
+    list-style: none;
+}
+.modal-dialog {
+    max-width: 80%;
+    width: 100%;
+    margin: 1.75rem auto;
 }
