@@ -61,6 +61,7 @@ function showCart() {
             let product =
                 '<li class="position-relative mx-auto col-md-6 col-12 mb-2">' +
                     `<h5>Товар: ${cartData[items][0]}</h5>` +
+                    `<a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)"></a><br>` +
                     '<div class="row">' +
                         '<div class="col-12">' +
                             `Размер: <p id="cartProductSize">${cartData[items][2]}</p>` +
@@ -71,7 +72,6 @@ function showCart() {
                         '</div>' +
                     '</div>' +
                     '<div class="product-divider"></div>' +
-                    `<a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)">&times;</a><br>` +
                 '</li>'
             productList.insertAdjacentHTML('beforeend', product)
         }
