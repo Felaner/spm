@@ -19,6 +19,9 @@
     .form-button{
         width: 300px;
     }
+    .delete-product{
+        opacity: 1;
+    }
 }
 
 @media (max-width: 767px) {
