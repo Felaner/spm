@@ -3,11 +3,17 @@
     height: 100%;
     background: white;
     background-size: cover;
-    z-index: 1000;
+    z-index: 1010;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
 .preloader-image {
-    z-index: 1010;
+    z-index: 1020;
 }
 
 .preloader-box {
@@ -17,7 +23,7 @@
     transform: translateX(-50%) translateY(-50%);
     color: #000;
     text-align: center;
-    z-index: 1020;
+    z-index: 1030;
 }
 
 .lds-default {
