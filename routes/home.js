@@ -2,25 +2,24 @@
 
 const {Router} = require('express');
 const router = Router();
-const fs = require('fs');
 const mailer = require('../mailer/mail');
 const request = require('request')
+const {SECRET_KEY, SITE_KEY, EMAIL_TO} = require('../keys')
 
 router.get('/', (req, res) => {
     res.render('home', {
         title: 'Главная',
-        isHome: true
+        isHome: true,
+        sitekey: SITE_KEY
     });
 });
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
     {
         return res.sendStatus(501);
     }
-    const secretKey = "6LcDmBQeAAAAAGk6QMlOIktEREu8S97YRBcSvZ-a";
-    const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+    const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + SECRET_KEY + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
     request(verificationURL,function(error,response,body) {
         body = JSON.parse(body);
         if(body.success !== undefined && !body.success) {
@@ -49,7 +48,7 @@ router.post('/', async (req, res) => {
                 }
             })
             const message = {
-                to: "kirill.deykun1@gmail.com",
+                to: EMAIL_TO,
                 html: `<ul>` +
                     '<h3>Заказчик</h3>' +
                     `${contactsBody}` +
