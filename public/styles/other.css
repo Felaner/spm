@@ -1,3 +1,7 @@
+.loaded_hiding {
+    overflow-y: hidden;
+}
+
 .loaded_hiding .preloader {
     transition: 0.3s opacity;
     opacity: 0;
