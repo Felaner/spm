@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const { EMAIL_USER, EMAIL_PASS, EMAIL_HOST } = require('../keys/index');
+const { EMAIL_USER, EMAIL_PASS, EMAIL_HOST, EMAIL_FROM} = require('../keys/index');
 
 const transporter = nodemailer.createTransport({
     host: EMAIL_HOST,
@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
         user: EMAIL_USER,
         pass: EMAIL_PASS,
     },
-    from: '<kirill.deykun1@gmail.com>'
+    from: EMAIL_FROM
 })
 
 const mailer = message => {

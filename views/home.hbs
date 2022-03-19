@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="recaptcha" class="g-recaptcha d-flex justify-content-center" data-sitekey="6LcDmBQeAAAAADOEL0zfoXRA_5VKwnv0KQ96DKNt" data-callback="verifyCallback"></div>
+                        <div id="recaptcha" class="g-recaptcha d-flex justify-content-center" data-sitekey="{{sitekey}}" data-callback="verifyCallback"></div>
                         <div class="row justify-content-center pt-2">
                             <button class="divide-button" id="cartBuy">Заказать</button>
                         </div>
@@ -65,7 +65,10 @@
         <div class="product-category f-30 font-weight-bold">Трубопроводная арматура</div>
     </div>
 </div>
-<div class="product-body parallax">
+<div class="parallax">
+    <img src="/images/backgrounds/product-bg.png" alt="bg">
+</div>
+<div class="product-body">
     <div class="container-fluid">
 
         {{> drafts/draft1}}
