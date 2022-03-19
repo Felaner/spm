@@ -87,8 +87,10 @@
     background: transparent;
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
-    margin-top: 10px;
     padding-left: 4px;
+}
+.input-section input::placeholder{
+    color: rgba(255,255,255, 0.7);
 }
 .input-section input:focus{
     outline: #FFFFFF;
@@ -113,8 +115,7 @@
 }
 .form-count{
     font-size: 24px;
-    margin-bottom: 0;
-    padding-top: 5px;
+    margin-bottom: 4px;
 }
 .map-wrapper{
     background: linear-gradient(180deg, #167AB6 0%, rgba(246, 250, 252, 0.59) 63.17%, #B3D9F0 72.41%, #167AB6 113.78%);
