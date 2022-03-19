@@ -1,8 +1,14 @@
 .first-bg{
-    background: url("../images/backgrounds/first-bg.svg") center center/cover no-repeat;
     width: 100%;
     height: 100vh;
 }
+
+.first-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .product-header{
     width: 100%;
     height: 100px;
