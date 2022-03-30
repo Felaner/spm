@@ -73,7 +73,9 @@ $(window).on('load', function () {
                 .addTo(controller)
         })
     }
+})()
 
+document.addEventListener('DOMContentLoaded', function () {
     const products = document.querySelectorAll('.product')
 
     products.forEach(function (el){
@@ -501,4 +503,4 @@ $(window).on('load', function () {
             })
         })
     })
-})()
+})
