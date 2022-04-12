@@ -21,25 +21,43 @@ function getRandomInRange(min, max) {
 
 function addToCart(el){
     let result = true
-    const productSize = el.parentNode.parentNode.querySelector('#size').value;
+    let productType = '',
+        productCount
+    const productSize = el.parentNode.parentNode.querySelector('#size').value
+    if (el.parentNode.parentNode.querySelector('#type:checked')) {
+        productType = el.parentNode.parentNode.querySelector('#type:checked').value
+    }
     if (productSize === '') {
         result = false
+        fadeAddSuccess('Выберите размер')
+        return false
+    }
+    if (productType === '') {
+        result = false
+        fadeAddSuccess('Выберите покрытие')
+        return false
+    }
+    if (el.parentNode.parentNode.querySelector('#count').value) {
+        productCount = parseInt(el.parentNode.parentNode.querySelector('#count').value)
+    } else {
+        result = false
+        fadeAddSuccess('Введите количество')
+        return false
     }
     if (result === false) {
-        fadeAddSuccess('Выберите размер')
+        fadeAddSuccess('Ошибка добаления')
         return false
     } else {
         el.disabled = true; // блокируем кнопку на время операции с корзиной
         const cartData = getCartData() || {}, // получаем данные корзины или создаём новый объект, если данных еще нет
             parentBox = el.parentNode.parentNode.parentNode.parentNode.parentNode, // родительский элемент кнопки "Добавить в корзину"
             itemId = parentBox.querySelector('input[type=hidden]').getAttribute('data-id'), // ID товара
-            itemTitle = parentBox.parentNode.parentNode.querySelector('.product-name').innerHTML, // название товара
-            productCount = parseInt(el.parentNode.parentNode.querySelector('#count').value)
+            itemTitle = parentBox.parentNode.parentNode.querySelector('.product-name').innerHTML // название товара
         if (cartData.hasOwnProperty(itemId)){ // если такой товар уже в корзине, то добавляем +1 к его количеству
             let difSizes = getRandomInRange(0, 5000) + itemId
-            cartData[difSizes] = [itemTitle, productCount, productSize];
+            cartData[difSizes] = [itemTitle, productCount, productSize, productType];
         } else { // если товара в корзине еще нет, то добавляем в объект
-            cartData[itemId] = [itemTitle, productCount, productSize];
+            cartData[itemId] = [itemTitle, productCount, productSize, productType];
         }
         if(!setCartData(cartData)){ // Обновляем данные в LocalStorage
             el.disabled = false; // разблокируем кнопку после обновления LS
@@ -62,6 +80,7 @@ function showCart() {
                 '<li class="position-relative mx-auto col-md-6 col-12 mb-2">' +
                     `<h5>Товар: ${cartData[items][0]}</h5>` +
                     `<a class="delete-product" data-id="${items}" onclick="deleteCartItem(this)"></a><br>` +
+                    `<p class="productType">${cartData[items][3]}</p>` +
                     '<div class="row">' +
                         '<div class="col-12">' +
                             `Размер: <p id="cartProductSize">${cartData[items][2]}</p>` +
@@ -194,16 +213,18 @@ $(function () {
                     let contacts = {
                         name: document.querySelector('#cartInputName').value,
                         phone: document.querySelector('#cartInputPhone').value,
-                        email: document.querySelector('#cartInputEmail').value
+                        email: document.querySelector('#cartInputEmail').value,
+                        comment: document.querySelector('#cartText').value
                     }
                     let products = {}
                     products['customer'] = contacts
                     products['g-recaptcha-response'] = grecaptcha.getResponse()
                     document.querySelectorAll('#cart_content li').forEach((el, i) => {
                         let name = el.querySelector('h5').innerText
+                        let type = el.querySelector('.productType').innerText
                         let count = el.querySelector('#productCount').value
                         let size = el.querySelector('#cartProductSize').innerText
-                        products[i] = [name, count, size]
+                        products[i] = [name, type, count, size]
                     })
                     $.ajax({
                         type: 'POST',

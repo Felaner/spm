@@ -32,15 +32,17 @@ router.post('/', async (req, res) => {
             Object.keys(Model).forEach((el) => {
                 if (el === 'customer') {
                     const contacts = Model[el]
-                    contactsBody += `<li>Имя: ${contacts['name']}<br>Номер телефона: ${contacts['phone']}<br>E-mail: ${contacts['email']}</li><br>`
+                    contactsBody += `<li>Имя: ${contacts['name']}<br>Номер телефона: ${contacts['phone']}<br>E-mail: ${contacts['email']}<br>Комментарий: ${contacts['comment']}</li><br>`
                 } else if (el !== 'g-recaptcha-response') {
                     messageBody += '<li>'
                     Model[el].forEach((el, i) => {
                         if (i === 0) {
                             messageBody += `${el}<br>`
                         } else if (i === 1) {
-                            messageBody += `Количество: ${el} шт.<br>`
+                            messageBody += `Покрытие: ${el}<br>`
                         } else if (i === 2) {
+                            messageBody += `Количество: ${el} шт.<br>`
+                        } else if (i === 3) {
                             messageBody += `Размер: ${el}<br>`
                         }
                     })
