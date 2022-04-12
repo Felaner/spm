@@ -8,7 +8,7 @@ const {SECRET_KEY, SITE_KEY, EMAIL_TO} = require('../keys')
 
 router.get('/', (req, res) => {
     res.render('home', {
-        title: 'Главная',
+        title: 'СИБПРОФМЕТАЛЛ',
         isHome: true,
         sitekey: SITE_KEY
     });

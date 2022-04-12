@@ -1,0 +1,16 @@
+.form-check{
+    margin-bottom: 15px;
+}
+.form-check-label{
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+}
+.form-check-input{
+    position: relative;
+    margin-top: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
